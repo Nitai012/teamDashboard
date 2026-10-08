@@ -19,8 +19,10 @@
     "typecheck": "pnpm build:shared && pnpm -r typecheck",
     "test": "pnpm build:shared && pnpm -r test",
     "check": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm test && pnpm build",
+    "first-run": "pnpm build:shared && pnpm --filter @team-radar/api build && node apps/api/dist/scripts/first-run.js",
     "hash-password": "pnpm build:shared && pnpm --filter @team-radar/api build && pnpm --filter @team-radar/api hash-password",
-    "db:seed": "pnpm build:shared && pnpm --filter @team-radar/api build && pnpm --filter @team-radar/api db:seed"
+    "db:seed": "pnpm build:shared && pnpm --filter @team-radar/api build && pnpm --filter @team-radar/api db:seed",
+    "serve": "pnpm build && pnpm --filter @team-radar/api start"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.0",

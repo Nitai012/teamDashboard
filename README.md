@@ -33,34 +33,43 @@ packages/
 
 ## הרצה מקומית
 
-דרוש Node.js 22.22 ומעלה ו־pnpm 10 (`corepack enable`).
+צריך Git ו־Node.js בגרסה 22.22 ומעלה. בודקים עם `node -v`, ואם הגרסה ישנה מתקינים LTS מ־[nodejs.org](https://nodejs.org).
 
 ```bash
+git clone https://github.com/Nitai012/teamDashboard.git
+cd teamDashboard
+corepack enable
 pnpm install
-cp .env.example .env
-pnpm hash-password            # מקליד סיסמה ומקבל hash
-# מדביקים את ה־hash ב־ADMIN_PASSWORD_HASH בקובץ .env
-# וממלאים SESSION_SECRET (למשל: openssl rand -base64 48)
-pnpm db:seed                  # לא חובה: צוות דוגמה כדי לראות איך זה נראה
+pnpm first-run
 pnpm dev
 ```
 
-הלקוח עולה בכתובת http://localhost:5173 והשרת ב־http://localhost:3000. Vite מעביר את `/api` לשרת.
+`pnpm first-run` שואל בטרמינל על סיסמה לכניסה (הקלדה מוסתרת, פעמיים), ויוצר לבד את קובץ ההגדרות `.env` עם ה־hash של הסיסמה ומפתח אקראי. בסוף הוא מציע להוסיף צוות דוגמה. אין צורך לערוך שום קובץ ידנית.
+
+אחרי `pnpm dev` פותחים את http://localhost:5173 ונכנסים עם הסיסמה שבחרת. עוצרים עם Ctrl+C. כדי לשנות סיסמה מריצים שוב `pnpm first-run`.
+
+### בדיקה מהטלפון
+
+```bash
+pnpm serve
+```
+
+הפקודה בונה הכל ומריצה שרת אחד בפורט 3000. בטלפון שמחובר לאותה רשת Wi‑Fi פותחים `http://<כתובת-ה-IP-של-המחשב>:3000`. במק מוצאים את הכתובת עם `ipconfig getifaddr en0`.
 
 ## הרצה עם Docker
 
 ```bash
-cp .env.example .env          # ממלאים ADMIN_PASSWORD_HASH ו־SESSION_SECRET
+cp .env.example .env
+docker compose run --rm app node dist/scripts/hash-password.js
+```
+
+מעתיקים את השורה שמתחילה ב־`scrypt:` לשדה `ADMIN_PASSWORD_HASH` בקובץ `.env`, ומכניסים ל־`SESSION_SECRET` לפחות 32 תווים אקראיים (למשל הפלט של `openssl rand -base64 48`). אחר כך:
+
+```bash
 docker compose up -d --build
 ```
 
 האפליקציה עולה בפורט 3000, והשרת מגיש גם את צד הלקוח מאותה כתובת. הנתונים נשמרים ב־volume בשם `team-radar-data`.
-
-כדי לייצר hash לסיסמה בלי Node מקומי:
-
-```bash
-docker compose run --rm app node dist/scripts/hash-password.js
-```
 
 ## משתני סביבה
 

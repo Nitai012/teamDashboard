@@ -10,6 +10,7 @@ services:
       # Fixed inside the container; the volume below keeps the data.
       PORT: 3000
       DATABASE_PATH: /data/team-radar.db
+      WEB_DIST_PATH: /app/web
     volumes:
       - team-radar-data:/data
 

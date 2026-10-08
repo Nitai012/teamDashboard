@@ -1,3 +1,4 @@
+import { resolve } from 'node:path';
 import { z } from 'zod';
 import { PASSWORD_HASH_PREFIX } from '../auth/password.js';
 
@@ -51,7 +52,8 @@ export class AppConfig {
     this.sessionSecret = env.SESSION_SECRET;
     this.adminPasswordHash = env.ADMIN_PASSWORD_HASH;
     this.sessionTtlMs = env.SESSION_TTL_HOURS * 3_600_000;
-    this.webDistPath = env.WEB_DIST_PATH || undefined;
+    // Express needs an absolute path to serve the app's index.html for inner routes.
+    this.webDistPath = env.WEB_DIST_PATH ? resolve(env.WEB_DIST_PATH) : undefined;
     this.cookieSecure = env.COOKIE_SECURE ?? env.NODE_ENV === 'production';
     this.trustProxy = env.TRUST_PROXY;
   }

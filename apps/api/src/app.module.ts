@@ -1,4 +1,6 @@
-import { Module } from '@nestjs/common';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { Logger, Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
@@ -22,8 +24,15 @@ import { SkillsModule } from './skills/skills.module.js';
     // In production the API also serves the built web app from the same origin.
     ServeStaticModule.forRootAsync({
       inject: [AppConfig],
-      useFactory: (config: AppConfig) =>
-        config.webDistPath ? [{ rootPath: config.webDistPath, exclude: ['/api/{*path}'] }] : [],
+      useFactory: (config: AppConfig) => {
+        if (!config.webDistPath) return [];
+        if (!existsSync(join(config.webDistPath, 'index.html'))) {
+          // Normal during development, before the web app has been built.
+          new Logger('Static').warn(`No web build at ${config.webDistPath}; serving the API only`);
+          return [];
+        }
+        return [{ rootPath: config.webDistPath, exclude: ['/api/{*path}'] }];
+      },
     }),
     AuthModule,
     MembersModule,
