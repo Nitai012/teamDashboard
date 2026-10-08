@@ -1,0 +1,74 @@
+.radar {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Geometry is laid out left-to-right; Hebrew labels still render correctly. */
+  direction: ltr;
+  overflow: visible;
+}
+
+.full {
+  max-width: 460px;
+  margin-inline: auto;
+}
+
+.editable {
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.shape {
+  fill: none;
+  stroke-linejoin: round;
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation: radar-in 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.mini .shape {
+  transform-origin: 50% 50%;
+}
+
+@keyframes radar-in {
+  from {
+    opacity: 0;
+    transform: scale(0.35);
+  }
+}
+
+.self {
+  stroke: var(--accent);
+}
+
+.self.filled {
+  fill: var(--accent-soft);
+}
+
+.compare {
+  stroke: var(--compare);
+}
+
+.training {
+  stroke: var(--train);
+}
+
+.training.filled {
+  fill: var(--train-soft);
+}
+
+.handle {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 3;
+  cursor: grab;
+}
+
+.label {
+  fill: var(--ink);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  dominant-baseline: middle;
+}

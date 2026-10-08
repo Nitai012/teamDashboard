@@ -1,0 +1,28 @@
+.spark {
+  display: block;
+  width: 100%;
+  height: auto;
+  direction: ltr;
+}
+
+.mid {
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+
+.area {
+  fill: var(--accent-soft);
+}
+
+.line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.dot {
+  fill: var(--accent);
+}

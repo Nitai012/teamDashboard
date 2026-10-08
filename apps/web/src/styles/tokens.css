@@ -1,0 +1,173 @@
+/*
+ * Design tokens. Concept: a field instrument. Cool steel neutrals on plotting
+ * paper, one radar-blue accent, a purple reserved for training, and the
+ * red-to-green assessment rings from the original sketch.
+ *
+ * Light values live on :root. Dark values are applied either by the OS setting
+ * (unless the user picked light) or by an explicit data-theme="dark".
+ */
+:root {
+  color-scheme: light;
+
+  --bg: #eef1f4;
+  --grid-dot: rgba(20, 32, 43, 0.075);
+  --surface: #ffffff;
+  --surface-2: #f4f6f8;
+  --surface-3: #e7ecf0;
+  --ink: #142029;
+  --ink-2: #4c5c6a;
+  --ink-3: #7a8996;
+  --line: #d7dee5;
+  --line-strong: #b8c3cd;
+
+  --accent: #2f62d0;
+  --accent-hover: #2554b8;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(47, 98, 208, 0.13);
+  --train: #7446bd;
+  --train-soft: rgba(116, 70, 189, 0.12);
+  --compare: #7d8a97;
+
+  --ok: #1d6b36;
+  --ok-bg: #e0f1e5;
+  --warn: #8f5400;
+  --warn-bg: #fbedd3;
+  --crit: #a3241b;
+  --crit-bg: #fae0dd;
+  --hatch: rgba(163, 36, 27, 0.4);
+
+  --ring-1: #a3211a;
+  --ring-3: #eb8c8c;
+  --ring-5: #ef8f45;
+  --ring-7: #f1c43e;
+  --ring-8: #98d9b3;
+  --ring-10: #1e7a3c;
+  --ring-faint: #e0e5ea;
+  --spoke: #1b2632;
+
+  --lv-1: #dbe5fa;
+  --lv-2: #99b6ef;
+  --lv-3: #2c5cc2;
+  --lv-3-ink: #ffffff;
+
+  --shadow-sm: 0 1px 2px rgba(20, 32, 43, 0.06);
+  --shadow-lg: 0 24px 64px rgba(10, 18, 26, 0.28);
+  --scrim: rgba(8, 13, 18, 0.5);
+
+  --font-display: 'Karantina', 'IBM Plex Sans Hebrew', 'Arial Hebrew', sans-serif;
+  --font-body: 'IBM Plex Sans Hebrew', 'Arial Hebrew', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.8438rem;
+  --fs-base: 0.9375rem;
+  --fs-md: 1.0625rem;
+  --fs-lg: 1.25rem;
+  --fs-display-sm: 2.25rem;
+  --fs-display: clamp(2.6rem, 8vw, 3.6rem);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --radius-full: 999px;
+
+  --topbar-h: 60px;
+  --bottomnav-h: 64px;
+  --content-max: 1080px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #0b1117;
+    --grid-dot: rgba(229, 236, 242, 0.055);
+    --surface: #131b23;
+    --surface-2: #19232d;
+    --surface-3: #223039;
+    --ink: #e4ebf1;
+    --ink-2: #9caab7;
+    --ink-3: #6e7e8b;
+    --line: #25313c;
+    --line-strong: #364553;
+    --accent: #7ea8ff;
+    --accent-hover: #98b9ff;
+    --accent-ink: #0b1117;
+    --accent-soft: rgba(126, 168, 255, 0.16);
+    --train: #b997ff;
+    --train-soft: rgba(185, 151, 255, 0.14);
+    --compare: #8795a3;
+    --ok: #6fd497;
+    --ok-bg: #15301f;
+    --warn: #f0b65a;
+    --warn-bg: #33270f;
+    --crit: #ff8f86;
+    --crit-bg: #3a1a18;
+    --hatch: rgba(255, 143, 134, 0.5);
+    --ring-1: #e0574e;
+    --ring-3: #c47878;
+    --ring-5: #dc8a45;
+    --ring-7: #d6b03c;
+    --ring-8: #5fae84;
+    --ring-10: #43b26a;
+    --ring-faint: #222d38;
+    --spoke: #c3cdd7;
+    --lv-1: #1d2d47;
+    --lv-2: #33558c;
+    --lv-3: #8eb2ff;
+    --lv-3-ink: #0b1117;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.55);
+    --scrim: rgba(0, 0, 0, 0.6);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0b1117;
+  --grid-dot: rgba(229, 236, 242, 0.055);
+  --surface: #131b23;
+  --surface-2: #19232d;
+  --surface-3: #223039;
+  --ink: #e4ebf1;
+  --ink-2: #9caab7;
+  --ink-3: #6e7e8b;
+  --line: #25313c;
+  --line-strong: #364553;
+  --accent: #7ea8ff;
+  --accent-hover: #98b9ff;
+  --accent-ink: #0b1117;
+  --accent-soft: rgba(126, 168, 255, 0.16);
+  --train: #b997ff;
+  --train-soft: rgba(185, 151, 255, 0.14);
+  --compare: #8795a3;
+  --ok: #6fd497;
+  --ok-bg: #15301f;
+  --warn: #f0b65a;
+  --warn-bg: #33270f;
+  --crit: #ff8f86;
+  --crit-bg: #3a1a18;
+  --hatch: rgba(255, 143, 134, 0.5);
+  --ring-1: #e0574e;
+  --ring-3: #c47878;
+  --ring-5: #dc8a45;
+  --ring-7: #d6b03c;
+  --ring-8: #5fae84;
+  --ring-10: #43b26a;
+  --ring-faint: #222d38;
+  --spoke: #c3cdd7;
+  --lv-1: #1d2d47;
+  --lv-2: #33558c;
+  --lv-3: #8eb2ff;
+  --lv-3-ink: #0b1117;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.55);
+  --scrim: rgba(0, 0, 0, 0.6);
+}

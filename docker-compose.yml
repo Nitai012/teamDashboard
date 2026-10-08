@@ -1,0 +1,17 @@
+services:
+  app:
+    build: .
+    image: team-radar:latest
+    restart: unless-stopped
+    ports:
+      - '${PORT:-3000}:3000'
+    env_file: .env
+    environment:
+      # Fixed inside the container; the volume below keeps the data.
+      PORT: 3000
+      DATABASE_PATH: /data/team-radar.db
+    volumes:
+      - team-radar-data:/data
+
+volumes:
+  team-radar-data:

@@ -1,0 +1,51 @@
+{
+  "name": "@team-radar/api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "REST API and SQLite persistence for the team radar",
+  "type": "module",
+  "files": [
+    "dist",
+    "drizzle"
+  ],
+  "scripts": {
+    "build": "nest build",
+    "dev": "nest start --watch",
+    "start": "node dist/main.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "db:generate": "drizzle-kit generate",
+    "db:seed": "node dist/database/seed.js",
+    "hash-password": "node dist/scripts/hash-password.js"
+  },
+  "dependencies": {
+    "@nestjs/common": "^12.1.2",
+    "@nestjs/core": "^12.1.2",
+    "@nestjs/platform-express": "^12.1.2",
+    "@nestjs/serve-static": "^12.0.0",
+    "@nestjs/throttler": "^6.7.1",
+    "@team-radar/shared": "workspace:*",
+    "better-sqlite3": "^12.4.1",
+    "cookie-parser": "^1.4.7",
+    "drizzle-orm": "^0.45.4",
+    "helmet": "^8.1.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^12.0.8",
+    "@nestjs/testing": "^12.1.2",
+    "@swc/core": "^1.16.13",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.18.0",
+    "@types/supertest": "^6.0.3",
+    "drizzle-kit": "^0.31.11",
+    "supertest": "^7.3.1",
+    "typescript": "~6.0.3",
+    "unplugin-swc": "^2.0.0",
+    "vitest": "^5.0.3"
+  }
+}

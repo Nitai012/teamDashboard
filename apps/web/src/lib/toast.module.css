@@ -1,0 +1,40 @@
+.region {
+  position: fixed;
+  inset-inline: 0;
+  bottom: calc(var(--bottomnav-h) + 12px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  justify-content: center;
+  padding-inline: 16px;
+  pointer-events: none;
+  z-index: 60;
+}
+
+@media (min-width: 760px) {
+  .region {
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+.toast {
+  max-width: 100%;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  box-shadow: var(--shadow-lg);
+  animation: toast-in 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.error {
+  background: var(--crit);
+  color: var(--surface);
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}

@@ -1,0 +1,66 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.control {
+  width: 100%;
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 16px; /* 16px stops iOS from zooming into the field */
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.control::placeholder {
+  color: var(--ink-3);
+}
+
+.control:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.control[aria-invalid='true'] {
+  border-color: var(--crit);
+}
+
+.control[type='date'] {
+  direction: ltr;
+  text-align: right;
+  font-family: var(--font-mono);
+}
+
+.textarea {
+  min-height: 84px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.select {
+  padding-inline-end: 12px;
+}
+
+.hint {
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+
+.error {
+  color: var(--crit);
+  font-weight: 600;
+}

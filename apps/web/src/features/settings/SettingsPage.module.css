@@ -1,0 +1,108 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 720px;
+}
+
+.text {
+  color: var(--ink-2);
+  font-size: var(--fs-sm);
+}
+
+.axesForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.axes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+@media (max-width: 420px) {
+  .axes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.backup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.linkButton,
+.fileButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  align-self: flex-start;
+  min-height: 42px;
+  padding: 8px 15px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.linkButton:hover,
+.fileButton:hover {
+  background: var(--surface-2);
+}
+
+.linkButton svg,
+.fileButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+.fileButton:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--line);
+}
+
+.error {
+  color: var(--crit);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.importConfirm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  font-size: var(--fs-sm);
+}
+
+.account {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
